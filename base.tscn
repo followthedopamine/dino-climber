@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://bb2a7w1ax4oym"]
+
+[ext_resource type="Texture2D" uid="uid://cj4drxv6frp6h" path="res://art/dino.png" id="2_f4w1q"]
+[ext_resource type="Texture2D" uid="uid://bq5j665im32yx" path="res://art/terrain.png" id="3_0ph1t"]
+[ext_resource type="Script" path="res://PlayerRigid.gd" id="3_hjrl5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2f1im"]
+size = Vector2(1183, 20)
+
+[node name="Base" type="Node2D"]
+
+[node name="PlayerTest" type="RigidBody2D" parent="."]
+position = Vector2(404, 403)
+max_contacts_reported = 500
+contact_monitor = true
+script = ExtResource("3_hjrl5")
+
+[node name="PlayerSprite" type="Sprite2D" parent="PlayerTest"]
+texture = ExtResource("2_f4w1q")
+
+[node name="PlayerCollider" type="CollisionPolygon2D" parent="PlayerTest"]
+polygon = PackedVector2Array(72, -24, 107, -41, 116, -61, 112, -72, 122, -76, 120, -94, 107, -116, 87, -123, 75, -142, 50, -141, 60, -118, 48, -116, 0, -113, 12, -89, 5, -70, -18, -61, -62, -63, -55, -32, -104, -15, -81, 19, -77, 44, -90, 75, -109, 91, -136, 102, -102, 104, -74, 99, -68, 120, -43, 121, -34, 137, -22, 133, -25, 114, -39, 104, -22, 91, -22, 82, -11, 91, 1, 111, 25, 107, 41, 108, 46, 118, 55, 111, 47, 92, 31, 90, 45, 71, 39, 55, 52, 30, 46, 15, 78, 2, 103, 6, 111, 16, 115, 8, 101, -16, 66, -21)
+
+[node name="Terrain" type="StaticBody2D" parent="."]
+
+[node name="TerrainSprite" type="Sprite2D" parent="Terrain"]
+position = Vector2(846, 371)
+texture = ExtResource("3_0ph1t")
+
+[node name="TerrainCollider" type="CollisionPolygon2D" parent="Terrain"]
+polygon = PackedVector2Array(650, 642, 642, 627, 586, 628, 550, 614, 542, 581, 594, 561, 647, 557, 669, 588, 689, 556, 727, 553, 705, 503, 714, 471, 738, 456, 778, 464, 750, 447, 734, 441, 773, 373, 790, 404, 796, 439, 809, 412, 817, 348, 850, 327, 866, 329, 865, 312, 862, 274, 818, 238, 813, 221, 829, 198, 872, 178, 892, 226, 909, 221, 941, 169, 980, 145, 1009, 146, 1021, 158, 1032, 153, 1016, 109, 1077, 105, 1087, 130, 1129, 134, 1147, 133, 1177, 136, 1185, 647)
+
+[node name="Floor" type="StaticBody2D" parent="."]
+
+[node name="FloorCollider" type="CollisionShape2D" parent="Floor"]
+position = Vector2(578, 659)
+shape = SubResource("RectangleShape2D_2f1im")
